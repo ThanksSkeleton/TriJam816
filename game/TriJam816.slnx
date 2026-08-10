@@ -1,0 +1,13 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Editor" />
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="TriJam816.2dog/TriJam816.2dog.csproj" />
+  <Project Path="TriJam816.csproj" />
+  <Project Path="TriJam816.web/TriJam816.web.csproj">
+    <BuildType Solution="Editor|*" Project="Debug" />
+    <Build Project="false" />
+  </Project>
+</Solution>
