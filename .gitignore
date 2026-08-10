@@ -1,7 +1,7 @@
 # Godot 4+ specific ignores
 ./game/godot/
 ./game/android/
-./game/addons
+./game/addons/
 .godot/
 bin/
 obj/
