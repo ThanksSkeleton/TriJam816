@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://o86td7khvx8m"]
+
+[ext_resource type="Script" uid="uid://bmgq4vg1a1kjx" path="res://Word.cs" id="1_vl1uy"]
+[ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="2_5kvxf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
+size = Vector2(125, 60)
+
+[node name="Word" type="Node2D" unique_id=1442078363]
+script = ExtResource("1_vl1uy")
+
+[node name="WordText" type="RichTextLabel" parent="." unique_id=421655195]
+offset_right = 112.0
+offset_bottom = 50.0
+theme_override_fonts/normal_font = ExtResource("2_5kvxf")
+theme_override_fonts/bold_font = ExtResource("2_5kvxf")
+theme_override_fonts/bold_italics_font = ExtResource("2_5kvxf")
+theme_override_fonts/italics_font = ExtResource("2_5kvxf")
+theme_override_fonts/mono_font = ExtResource("2_5kvxf")
+theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/bold_font_size = 40
+theme_override_font_sizes/bold_italics_font_size = 40
+theme_override_font_sizes/italics_font_size = 40
+theme_override_font_sizes/mono_font_size = 40
+text = "TEST"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=235537715]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1798348422]
+position = Vector2(55.25, 24)
+shape = SubResource("RectangleShape2D_715ky")

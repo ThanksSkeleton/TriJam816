@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://bkrabpgkdh5vs"]
+
+[ext_resource type="Script" uid="uid://bbuoqep8n6foc" path="res://GameManager.cs" id="1_ip7xm"]
+[ext_resource type="PackedScene" uid="uid://c5w0ut4ydbvx5" path="res://zombie.tscn" id="2_i431l"]
+[ext_resource type="PackedScene" uid="uid://o86td7khvx8m" path="res://word.tscn" id="2_oxp8w"]
+[ext_resource type="Texture2D" uid="uid://yutqj8tl2uj3" path="res://Images/Character Still Eye Closed.PNG" id="3_7sfm4"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vl1uy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
+size = Vector2(20, 15.452802)
+
+[node name="Node2D" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
+script = ExtResource("1_ip7xm")
+ZombieScene = ExtResource("2_i431l")
+WordScene = ExtResource("2_oxp8w")
+Left_Zombie_1 = NodePath("ZombieSpawns/LeftZombies/Zombie")
+Left_Zombie_2 = NodePath("ZombieSpawns/LeftZombies/Zombie2")
+Left_Zombie_3 = NodePath("ZombieSpawns/LeftZombies/Zombie3")
+Left_Zombie_4 = NodePath("ZombieSpawns/LeftZombies/Zombie4")
+Left_Zombie_5 = NodePath("ZombieSpawns/LeftZombies/Zombie5")
+Left_Zombie_6 = NodePath("ZombieSpawns/LeftZombies/Zombie6")
+Right_Zombie_1 = NodePath("ZombieSpawns/RightZombies/Zombie")
+Right_Zombie_2 = NodePath("ZombieSpawns/RightZombies/Zombie2")
+Right_Zombie_3 = NodePath("ZombieSpawns/RightZombies/Zombie3")
+Right_Zombie_4 = NodePath("ZombieSpawns/RightZombies/Zombie4")
+Right_Zombie_5 = NodePath("ZombieSpawns/RightZombies/Zombie5")
+Right_Zombie_6 = NodePath("ZombieSpawns/RightZombies/Zombie6")
+Left_Word_1 = NodePath("WordSpawns/LeftSpawn/Spawn1")
+Left_Word_2 = NodePath("WordSpawns/LeftSpawn/Spawn2")
+Left_Word_3 = NodePath("WordSpawns/LeftSpawn/Spawn3")
+Left_Word_4 = NodePath("WordSpawns/LeftSpawn/Spawn4")
+Left_Word_5 = NodePath("WordSpawns/LeftSpawn/Spawn5")
+Right_Word_1 = NodePath("WordSpawns/RightSpawn/Spawn1")
+Right_Word_2 = NodePath("WordSpawns/RightSpawn/Spawn2")
+Right_Word_3 = NodePath("WordSpawns/RightSpawn/Spawn3")
+Right_Word_4 = NodePath("WordSpawns/RightSpawn/Spawn4")
+Right_Word_5 = NodePath("WordSpawns/RightSpawn/Spawn5")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1483936185]
+position = Vector2(640, 360)
+scale = Vector2(1280, 720)
+texture = SubResource("PlaceholderTexture2D_vl1uy")
+
+[node name="Player" type="Node2D" parent="." unique_id=374016299]
+position = Vector2(640, 200)
+
+[node name="PlayerHurtBox" type="Area2D" parent="Player" unique_id=402537126]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerHurtBox" unique_id=135350057]
+scale = Vector2(8.686083, 36.678402)
+shape = SubResource("RectangleShape2D_715ky")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1013402559]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_7sfm4")
+
+[node name="WordSpawns" type="Node2D" parent="." unique_id=1414087191]
+
+[node name="LeftSpawn" type="Node2D" parent="WordSpawns" unique_id=911068200]
+
+[node name="Spawn5" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=1606379959]
+position = Vector2(0, 65)
+
+[node name="Spawn4" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=1633610020]
+position = Vector2(0, 130)
+
+[node name="Spawn3" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=344904650]
+position = Vector2(0, 195)
+
+[node name="Spawn2" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=1596302734]
+position = Vector2(0, 260)
+
+[node name="Spawn1" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=343496615]
+position = Vector2(0, 325)
+
+[node name="RightSpawn" type="Node2D" parent="WordSpawns" unique_id=573808883]
+position = Vector2(1277, 0)
+
+[node name="Spawn5" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=1413426702]
+position = Vector2(0, 65)
+
+[node name="Spawn4" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=658774992]
+position = Vector2(0, 130)
+
+[node name="Spawn3" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=950383770]
+position = Vector2(0, 195)
+
+[node name="Spawn2" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=1052107454]
+position = Vector2(0, 260)
+
+[node name="Spawn1" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=1257430027]
+position = Vector2(0, 325)
+
+[node name="ZombieSpawns" type="Node2D" parent="." unique_id=519062655]
+
+[node name="LeftZombies" type="Node2D" parent="ZombieSpawns" unique_id=342640184]
+
+[node name="Zombie2" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=2048916425]
+position = Vector2(312, 428)
+
+[node name="Zombie" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=359510789]
+position = Vector2(389, 479)
+
+[node name="Zombie3" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=1832651817]
+position = Vector2(160, 428)
+
+[node name="Zombie4" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=6634509]
+position = Vector2(237, 479)
+
+[node name="Zombie5" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=882108348]
+position = Vector2(37, 428)
+
+[node name="Zombie6" type="Node2D" parent="ZombieSpawns/LeftZombies" unique_id=2071486854]
+position = Vector2(114, 479)
+
+[node name="RightZombies" type="Node2D" parent="ZombieSpawns" unique_id=1616447990]
+position = Vector2(808, 0)
+
+[node name="Zombie2" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=563609607]
+position = Vector2(312, 428)
+
+[node name="Zombie" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=190669628]
+position = Vector2(389, 479)
+
+[node name="Zombie3" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=292064149]
+position = Vector2(160, 428)
+
+[node name="Zombie4" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=241044690]
+position = Vector2(237, 479)
+
+[node name="Zombie5" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=72498236]
+position = Vector2(37, 428)
+
+[node name="Zombie6" type="Node2D" parent="ZombieSpawns/RightZombies" unique_id=1492000978]
+position = Vector2(114, 479)

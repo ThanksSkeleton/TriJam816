@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://hgiga62t7o7x"]
+
+[ext_resource type="Script" uid="uid://cs8g2qjfmgorc" path="res://Zombie.cs" id="1_wtcfe"]
+[ext_resource type="Texture2D" uid="uid://76qoq11lrs3v" path="res://Images/Zombie A1.PNG" id="2_0e48y"]
+
+[node name="Node2D" type="Node2D" unique_id=208620959]
+script = ExtResource("1_wtcfe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=56913495]
+texture = ExtResource("2_0e48y")
