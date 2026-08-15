@@ -1,5 +1,56 @@
 [gd_scene format=3 uid="uid://lvg3sxpdhlg1"]
 
-[node name="Root" type="Node2D" unique_id=1266006815]
+[ext_resource type="Script" uid="uid://cb3bbrawxvvrw" path="res://Root.cs" id="1_28aoi"]
+[ext_resource type="Texture2D" uid="uid://wrormgb7vbdq" path="res://Images/Stage 1.PNG" id="1_vvh5c"]
+[ext_resource type="Texture2D" uid="uid://2d05fpw5e8qu" path="res://Images/Title Card.PNG" id="2_28aoi"]
+[ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="3_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://bkrabpgkdh5vs" path="res://battle.tscn" id="5_jnlp7"]
+[ext_resource type="PackedScene" uid="uid://b66ctqsleleij" path="res://game_over.tscn" id="6_vyht1"]
+[ext_resource type="PackedScene" uid="uid://b3k46usi0k1vh" path="res://you_win.tscn" id="7_bf3um"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=544637326]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_715ky"]
+
+[node name="Root" type="Node2D" unique_id=1266006815]
+script = ExtResource("1_28aoi")
+
+[node name="TitleScreen" type="Node2D" parent="." unique_id=1600428320]
+visible = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="TitleScreen" unique_id=934931235]
+position = Vector2(644, 353)
+scale = Vector2(1.6838889, 1.1864072)
+texture = ExtResource("1_vvh5c")
+
+[node name="Sprite2D" type="Sprite2D" parent="TitleScreen" unique_id=544637326]
+
+[node name="TitleCard" type="Sprite2D" parent="TitleScreen" unique_id=1947088046]
+position = Vector2(679.00006, 402)
+scale = Vector2(0.9783397, 0.90653443)
+texture = ExtResource("2_28aoi")
+
+[node name="Button" type="Button" parent="TitleScreen" unique_id=39644401]
+custom_minimum_size = Vector2(270, 90)
+custom_maximum_size = Vector2(270, 100)
+offset_left = 539.0
+offset_top = 464.0
+offset_right = 809.0
+offset_bottom = 554.0
+icon = SubResource("PlaceholderTexture2D_715ky")
+
+[node name="Label" type="Label" parent="TitleScreen/Button" unique_id=1302900338]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(1.4140625, 1.2727273)
+theme_override_fonts/font = ExtResource("3_jnlp7")
+theme_override_font_sizes/font_size = 60
+text = "START"
+
+[node name="Battle" parent="." unique_id=1664762994 instance=ExtResource("5_jnlp7")]
+visible = false
+
+[node name="GameOver" parent="." unique_id=783712007 instance=ExtResource("6_vyht1")]
+visible = false
+
+[node name="YouWin" parent="." unique_id=542551093 instance=ExtResource("7_bf3um")]
+visible = false

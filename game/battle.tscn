@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
 size = Vector2(20, 15.452802)
 
-[node name="Node2D" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
+[node name="Battle" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
 position = Vector2(1, 0)
 script = ExtResource("1_ip7xm")
 ZombieScene = ExtResource("2_i431l")
