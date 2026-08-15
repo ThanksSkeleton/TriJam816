@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b66ctqsleleij"]
+
+[ext_resource type="Texture2D" uid="uid://ubkailhps1vk" path="res://Images/Show Over.PNG" id="1_ccer4"]
+[ext_resource type="Texture2D" uid="uid://dvrufuypmnm3u" path="res://Images/Zombies.PNG" id="2_8u835"]
+[ext_resource type="Texture2D" uid="uid://b63f5ltmhyuvw" path="res://Images/Character Death.PNG" id="3_ftari"]
+
+[node name="GameOver" type="Node2D" unique_id=783712007]
+
+[node name="ShowOver" type="Sprite2D" parent="." unique_id=1832561136]
+position = Vector2(661, 306)
+texture = ExtResource("1_ccer4")
+
+[node name="ZombieTitle" type="Sprite2D" parent="." unique_id=1948095084]
+position = Vector2(656, 454)
+texture = ExtResource("2_8u835")
+
+[node name="CharacterDeath" type="Sprite2D" parent="." unique_id=1321199715]
+position = Vector2(711, 313)
+scale = Vector2(0.56, 0.5600006)
+texture = ExtResource("3_ftari")

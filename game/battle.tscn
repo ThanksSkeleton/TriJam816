@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://c5w0ut4ydbvx5" path="res://zombie.tscn" id="2_i431l"]
 [ext_resource type="PackedScene" uid="uid://o86td7khvx8m" path="res://word.tscn" id="2_oxp8w"]
 [ext_resource type="Texture2D" uid="uid://yutqj8tl2uj3" path="res://Images/Character Still Eye Closed.PNG" id="3_7sfm4"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vl1uy"]
+[ext_resource type="Texture2D" uid="uid://wrormgb7vbdq" path="res://Images/Stage 1.PNG" id="4_6t8i5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
 size = Vector2(20, 15.452802)
 
 [node name="Node2D" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
+position = Vector2(1, 0)
 script = ExtResource("1_ip7xm")
 ZombieScene = ExtResource("2_i431l")
 WordScene = ExtResource("2_oxp8w")
@@ -38,9 +38,9 @@ Right_Word_4 = NodePath("WordSpawns/RightSpawn/Spawn4")
 Right_Word_5 = NodePath("WordSpawns/RightSpawn/Spawn5")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1483936185]
-position = Vector2(640, 360)
-scale = Vector2(1280, 720)
-texture = SubResource("PlaceholderTexture2D_vl1uy")
+position = Vector2(638.00006, 333)
+scale = Vector2(1.5999987, 1.2799988)
+texture = ExtResource("4_6t8i5")
 
 [node name="Player" type="Node2D" parent="." unique_id=374016299]
 position = Vector2(640, 200)

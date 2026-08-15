@@ -156,8 +156,6 @@ public partial class GameManager : Node2D
 		// pick spawn location
 		// spawn word and add it to Word List;
 		Word word = null;
-
-
 		var sd = new List<(Node2D, Vector2)> { (Helper.PickRandom(Left_Words), Vector2.Right), (Helper.PickRandom(Right_Words), Vector2.Left) };
 		var selected_sd = Helper.PickRandom(sd);
 		if (cute)
@@ -236,26 +234,26 @@ public partial class GameManager : Node2D
 
 	private void WinPopup()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void LosePopup()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void GamePause()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void DrawHealthLevel()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void DrawZombieLevel()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 }

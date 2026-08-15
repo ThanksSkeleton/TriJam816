@@ -101,22 +101,21 @@ public partial class Word : CharacterBody2D
 
 	private void BadHitEffect()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void GoodHitEffect()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void ExplodeGoodEffect()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
 
 	private void ExplodeBadEffect()
 	{
-		throw new NotImplementedException();
+		//throw new NotImplementedException();
 	}
-
 }
