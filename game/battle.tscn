@@ -7,9 +7,118 @@
 [ext_resource type="AudioStream" uid="uid://d1hunmtd8meam" path="res://Music/aviansho9-k-pop-beat-190643.mp3" id="4_dw4jg"]
 [ext_resource type="Texture2D" uid="uid://dxggmrm4akt20" path="res://Images/Stage 1_DIM.PNG" id="5_dw4jg"]
 [ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="6_0npn6"]
+[ext_resource type="Texture2D" uid="uid://c1xxdye0e6mcb" path="res://Images/Character Still Eyes Open.PNG" id="8_ol6im"]
+[ext_resource type="Texture2D" uid="uid://cogwuuo0sdg4r" path="res://Images/Character Still Eyes Open Mouth Open.PNG" id="9_b1i6x"]
+[ext_resource type="Texture2D" uid="uid://cs410burl62mb" path="res://Images/Character Still Eyes Closed Mouth Open.PNG" id="10_sl0w2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
 size = Vector2(20, 15.452802)
+
+[sub_resource type="Animation" id="Animation_elvfr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_7sfm4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_4s0ev"]
+resource_name = "Sing"
+length = 3.0333333
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.03333334, 0.099999994, 0.43333334, 0.76666665, 0.9000001, 1.4, 1.5333334, 1.7, 1.9333333, 2.0666666, 2.4333334, 2.8333333, 2.9666665),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_7sfm4"), ExtResource("8_ol6im"), ExtResource("9_b1i6x"), ExtResource("10_sl0w2"), ExtResource("9_b1i6x"), ExtResource("10_sl0w2"), ExtResource("9_b1i6x"), ExtResource("3_7sfm4"), ExtResource("10_sl0w2"), ExtResource("9_b1i6x"), ExtResource("3_7sfm4"), ExtResource("10_sl0w2"), ExtResource("9_b1i6x")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.8666667, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.050000004, 0, 0, 0, -5, -0.25, 0, 0.25, 0, 0, -0.050000004, 0, 0, 0, 3, -0.25, 0, 0.25, 0, 0, -0.050000004, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.56666666, 0.8, 2.1, 2.2666667)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.027777772, 0, 0, 0, 0, -0.038888894, 0, 0, 0),
+"times": PackedFloat32Array(1, 1.5, 1.9)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pihy1"]
+_data = {
+&"RESET": SubResource("Animation_elvfr"),
+&"Sing": SubResource("Animation_4s0ev")
+}
 
 [node name="Battle" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("mainMusic", "Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
 script = ExtResource("1_ip7xm")
@@ -61,6 +170,10 @@ shape = SubResource("RectangleShape2D_715ky")
 material = ExtResource("6_0npn6")
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_7sfm4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=1738210287]
+libraries/ = SubResource("AnimationLibrary_pihy1")
+autoplay = &"Sing"
 
 [node name="WordSpawns" type="Node2D" parent="." unique_id=1414087191]
 

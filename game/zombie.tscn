@@ -6,9 +6,99 @@
 [ext_resource type="AudioStream" uid="uid://bvux5pa6v743o" path="res://SFX/449166__horathdrak__thank-you.ogg" id="4_7nqyo"]
 [ext_resource type="AudioStream" uid="uid://bydhu0j8us1v2" path="res://SFX/429036__theuncertainman__thank-you-npc-british-male.wav" id="5_lnshm"]
 [ext_resource type="Texture2D" uid="uid://bwvnnpgfffike" path="res://Particles/heart.png" id="6_lnshm"]
+[ext_resource type="Texture2D" uid="uid://dvluakre1ik2t" path="res://Images/Zombie A2.PNG" id="7_ogcpr"]
+[ext_resource type="Texture2D" uid="uid://bl7lkkqppoi1o" path="res://Images/Zombie A3.PNG" id="8_i82o5"]
 
-[node name="Node2D" type="Node2D" unique_id=208620959]
+[sub_resource type="Animation" id="Animation_jw3ev"]
+resource_name = "Heal"
+length = 3.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"new_marker",
+"time": 2.0
+}]
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"Die"
+}, {
+"args": [],
+"method": &"RandomThankYou"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_jmu02"), ExtResource("7_ogcpr"), ExtResource("8_i82o5"), null]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeartParticles:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.19999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x4h2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_jmu02")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeartParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pub2r"]
+_data = {
+&"Heal": SubResource("Animation_jw3ev"),
+&"RESET": SubResource("Animation_x4h2d")
+}
+
+[node name="Node2D" type="Node2D" unique_id=208620959 node_paths=PackedStringArray("sprite", "thanks1", "thanks2", "hearts", "player")]
 script = ExtResource("1_roy8y")
+sprite = NodePath("Sprite2D")
+thanks1 = NodePath("ThankYou1")
+thanks2 = NodePath("ThankYou2")
+hearts = NodePath("HeartParticles")
+player = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=56913495]
 material = ExtResource("2_eseir")
@@ -25,6 +115,7 @@ scale = Vector2(0.47999984, 1)
 amount = 100
 texture = ExtResource("6_lnshm")
 lifetime = 2.0
+one_shot = true
 randomness = 0.16
 direction = Vector2(1, 2)
 spread = 156.29
@@ -36,3 +127,6 @@ angle_max = 180.0
 scale_amount_min = 0.2
 scale_amount_max = 0.2
 color = Color(0.94509804, 0.61960787, 0.8980392, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=103491566]
+libraries/ = SubResource("AnimationLibrary_pub2r")

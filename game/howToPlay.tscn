@@ -8,8 +8,67 @@
 [ext_resource type="Texture2D" uid="uid://yutqj8tl2uj3" path="res://Images/Character Still Eye Closed.PNG" id="7_i0xw3"]
 [ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="7_w8pbt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
-size = Vector2(20, 15.452802)
+[sub_resource type="Animation" id="Animation_w8pbt"]
+resource_name = "Hop"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -30), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667, 0.9, 1.1666666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_csf71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m6mg7"]
+_data = {
+&"Hop": SubResource("Animation_w8pbt"),
+&"RESET": SubResource("Animation_csf71")
+}
 
 [node name="HowToPlay" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Start")]
 script = ExtResource("1_6mam6")
@@ -29,17 +88,14 @@ offset = Vector2(398.75037, 299.21902)
 [node name="Player" type="Node2D" parent="." unique_id=374016299]
 position = Vector2(1132, 338)
 
-[node name="PlayerHurtBox" type="Area2D" parent="Player" unique_id=402537126]
-position = Vector2(1, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerHurtBox" unique_id=135350057]
-scale = Vector2(8.686083, 36.678402)
-shape = SubResource("RectangleShape2D_715ky")
-
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1013402559]
 material = ExtResource("4_wai6e")
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("7_i0xw3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player" unique_id=139183332]
+libraries/ = SubResource("AnimationLibrary_m6mg7")
+autoplay = &"Hop"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1846702132]
 offset_left = 92.0

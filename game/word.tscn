@@ -6,6 +6,22 @@
 [ext_resource type="Texture2D" uid="uid://tselr2jrxr6" path="res://Particles/dirt_02.png" id="3_qlfdg"]
 [ext_resource type="Texture2D" uid="uid://cetudugja0j35" path="res://Particles/dirt_03.png" id="4_dlft6"]
 [ext_resource type="Texture2D" uid="uid://bwvnnpgfffike" path="res://Particles/heart.png" id="5_qfnsh"]
+[ext_resource type="AudioStream" uid="uid://ci0ghf2q4ximd" path="res://SFX/impactSoft_heavy_000.ogg" id="7_1sgiw"]
+[ext_resource type="AudioStream" uid="uid://ciev2qo0rjww5" path="res://SFX/jingles_STEEL00.ogg" id="7_jteiy"]
+[ext_resource type="AudioStream" uid="uid://eggecdcg5tfr" path="res://SFX/impactSoft_heavy_001.ogg" id="8_ba4q1"]
+[ext_resource type="AudioStream" uid="uid://bijulvba2jd34" path="res://SFX/impactMining_000.ogg" id="8_x2aky"]
+[ext_resource type="AudioStream" uid="uid://cxt7h2p7gxswi" path="res://SFX/impactMining_001.ogg" id="9_pay2b"]
+[ext_resource type="AudioStream" uid="uid://felwuhduotm2" path="res://SFX/impactSoft_heavy_002.ogg" id="9_v7pxp"]
+[ext_resource type="AudioStream" uid="uid://cm27moejqh2yh" path="res://SFX/impactSoft_heavy_003.ogg" id="10_ebcw0"]
+[ext_resource type="AudioStream" uid="uid://c8kl0kpj2emr6" path="res://SFX/impactMining_002.ogg" id="10_ov5xl"]
+[ext_resource type="AudioStream" uid="uid://duv162xyoc75d" path="res://SFX/impactMining_003.ogg" id="11_5xwup"]
+[ext_resource type="AudioStream" uid="uid://dyegrbm1bywsu" path="res://SFX/impactSoft_heavy_004.ogg" id="11_d5nx2"]
+[ext_resource type="AudioStream" uid="uid://kgvfsrdqkk2l" path="res://SFX/impactMetal_light_001.ogg" id="12_d5nx2"]
+[ext_resource type="AudioStream" uid="uid://md12ggq7nel5" path="res://SFX/impactMining_004.ogg" id="12_fl2s2"]
+[ext_resource type="AudioStream" uid="uid://bbruluf2eqnpt" path="res://SFX/impactMetal_light_002.ogg" id="13_7uyqg"]
+[ext_resource type="AudioStream" uid="uid://bvdsemt4ssqil" path="res://SFX/445109__breviceps__mud-splat.wav" id="13_pf8yl"]
+[ext_resource type="AudioStream" uid="uid://pcuqwai2w4fp" path="res://SFX/impactMetal_light_003.ogg" id="14_bdx46"]
+[ext_resource type="AudioStream" uid="uid://4y7wotqvtv5o" path="res://SFX/impactMetal_light_004.ogg" id="15_l4bal"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rv581"]
 
@@ -32,37 +48,309 @@ scale_min = 0.12
 scale_max = 0.25
 color = Color(0.047058824, 1, 0, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
-size = Vector2(125, 60)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xvy0e"]
+streams_count = 5
+stream_0/stream = ExtResource("8_x2aky")
+stream_1/stream = ExtResource("9_pay2b")
+stream_2/stream = ExtResource("10_ov5xl")
+stream_3/stream = ExtResource("11_5xwup")
+stream_4/stream = ExtResource("12_fl2s2")
 
-[node name="Word" type="Node2D" unique_id=1442078363 node_paths=PackedStringArray("greenSplat", "heartBurst", "textBox", "area", "normal", "cute", "fail")]
+[sub_resource type="Animation" id="Animation_kl5pu"]
+resource_name = "BadHit"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBad:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7uyqg"]
+resource_name = "GoodHit"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitGood:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_2gba7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitGood:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBad:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SuccessCute:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HeartParticles:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SuccessNormal:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Fail:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("GreenParticles:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("WordText:modulate:a")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jteiy"]
+resource_name = "SuccessCute"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuccessCute:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HeartParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WordText:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_x2aky"]
+resource_name = "SuccessNormal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SuccessNormal:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WordText:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pay2b"]
+resource_name = "fail"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fail:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GreenParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WordText:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bdx46"]
+_data = {
+&"BadHit": SubResource("Animation_kl5pu"),
+&"GoodHit": SubResource("Animation_7uyqg"),
+&"RESET": SubResource("Animation_2gba7"),
+&"SuccessCute": SubResource("Animation_jteiy"),
+&"SuccessNormal": SubResource("Animation_x2aky"),
+&"fail": SubResource("Animation_pay2b")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_715ky"]
+streams_count = 5
+stream_0/stream = ExtResource("7_1sgiw")
+stream_1/stream = ExtResource("8_ba4q1")
+stream_2/stream = ExtResource("9_v7pxp")
+stream_3/stream = ExtResource("10_ebcw0")
+stream_4/stream = ExtResource("11_d5nx2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l4bal"]
+streams_count = 4
+stream_0/stream = ExtResource("12_d5nx2")
+stream_1/stream = ExtResource("13_7uyqg")
+stream_2/stream = ExtResource("14_bdx46")
+stream_3/stream = ExtResource("15_l4bal")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
+size = Vector2(296.25, 60)
+
+[node name="Word" type="Area2D" unique_id=1219763690 node_paths=PackedStringArray("greenSplat", "heartBurst", "textBox", "area", "normal", "cute", "fail", "ani")]
 script = ExtResource("1_vl1uy")
+BaseVelocity = 1.0
+BaseBoostFraction = 4.0
+PauseDuration = 0.5
+BoostDuration = 2.0
 greenSplat = NodePath("GreenParticles")
 heartBurst = NodePath("HeartParticles")
 textBox = NodePath("WordText")
-area = NodePath("Area2D")
+area = NodePath(".")
 normal = NodePath("SuccessNormal")
 cute = NodePath("SuccessCute")
 fail = NodePath("Fail")
+ani = NodePath("AnimationPlayer")
 
 [node name="GreenParticles" type="GPUParticles2D" parent="." unique_id=1100532647]
 z_index = 1
 material = SubResource("CanvasItemMaterial_rv581")
-position = Vector2(54, 25.999998)
 scale = Vector2(0.5484852, 0.36142886)
 emitting = false
 amount = 3
 texture = SubResource("AnimatedTexture_ka624")
+lifetime = 0.21
 one_shot = true
 process_material = SubResource("ParticleProcessMaterial_rv581")
 
 [node name="HeartParticles" type="CPUParticles2D" parent="." unique_id=1193679350]
-position = Vector2(42, 25)
 scale = Vector2(0.47999984, 1)
 emitting = false
-amount = 100
+amount = 20
 texture = ExtResource("5_qfnsh")
-lifetime = 2.0
+lifetime = 0.5
 one_shot = true
 randomness = 0.16
 direction = Vector2(1, 2)
@@ -78,8 +366,10 @@ color = Color(0.94509804, 0.61960787, 0.8980392, 1)
 
 [node name="WordText" type="RichTextLabel" parent="." unique_id=421655195]
 z_index = 4
-offset_right = 112.0
-offset_bottom = 50.0
+offset_left = -147.91673
+offset_top = -29.999998
+offset_right = 147.08327
+offset_bottom = 20.000002
 theme_override_fonts/normal_font = ExtResource("2_5kvxf")
 theme_override_fonts/bold_font = ExtResource("2_5kvxf")
 theme_override_fonts/bold_italics_font = ExtResource("2_5kvxf")
@@ -91,15 +381,26 @@ theme_override_font_sizes/bold_italics_font_size = 40
 theme_override_font_sizes/italics_font_size = 40
 theme_override_font_sizes/mono_font_size = 40
 text = "TEST"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=235537715]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1798348422]
-position = Vector2(55.25, 24)
-shape = SubResource("RectangleShape2D_715ky")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="SuccessCute" type="AudioStreamPlayer2D" parent="." unique_id=1833655464]
+stream = ExtResource("7_jteiy")
 
 [node name="SuccessNormal" type="AudioStreamPlayer2D" parent="." unique_id=1053719818]
+stream = SubResource("AudioStreamRandomizer_xvy0e")
 
 [node name="Fail" type="AudioStreamPlayer2D" parent="." unique_id=1145884713]
+stream = ExtResource("13_pf8yl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713685847]
+libraries/ = SubResource("AnimationLibrary_bdx46")
+
+[node name="HitGood" type="AudioStreamPlayer2D" parent="." unique_id=1256812719]
+stream = SubResource("AudioStreamRandomizer_715ky")
+
+[node name="HitBad" type="AudioStreamPlayer2D" parent="." unique_id=2035559037]
+stream = SubResource("AudioStreamRandomizer_l4bal")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1035213843]
+shape = SubResource("RectangleShape2D_715ky")

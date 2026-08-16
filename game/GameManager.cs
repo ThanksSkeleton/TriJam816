@@ -77,9 +77,10 @@ public partial class GameManager : Node2D
 	public override void _Ready()
 	{
 		// Start Music
-		SongTimeRemaining = ((AudioStreamMP3) mainMusic.Stream)._GetLength();
+		SongTimeRemaining = mainMusic.Stream.GetLength();
+		GD.Print("Song Time"+ SongTimeRemaining);
 		this.SpawnTimes = GenerateSpawns();
-		this.mainMusic.
+		this.mainMusic.Play();
 	}
 
 	const int nonCuteMultiplier = 3;
@@ -99,10 +100,13 @@ public partial class GameManager : Node2D
 		return toReturn;
 	}
 
-
-	public void BeginMatch()
+	public override void _Input(InputEvent @event)
 	{
-		
+		if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+		{
+			var c = char.ConvertFromUtf32((int)keyEvent.Unicode);
+			AcceptInput(c[0]);
+		}
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -173,6 +177,7 @@ public partial class GameManager : Node2D
 	private Word MakeWord(string word, bool isCute, Node2D parent, Vector2 direction) 
 	{
 		Word w =  (Word) WordScene.Instantiate();
+		w.GameManager = this;
 		w.isAlive = true;
 		w.IsCute = isCute;
 		w.Direction = direction;

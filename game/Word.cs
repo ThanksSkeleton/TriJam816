@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public partial class Word : CharacterBody2D
+public partial class Word : Area2D
 {
-	GameManager GameManager;
+	public GameManager GameManager;
 
 	// Current State
 	public bool IsCute;	
@@ -11,14 +11,11 @@ public partial class Word : CharacterBody2D
 	public string word;
 
 	public Vector2 Direction;
+	public Vector2 Velocity;
 	double PausedTime; 
 	double BoostTime;
 	double BoostFraction;
 	int LetterIndex; 
-
-	
-	// Fields
-	string MyString;
 	
 	// Consts
 	[Export]
@@ -43,16 +40,32 @@ public partial class Word : CharacterBody2D
 	AudioStreamPlayer2D cute;
 	[Export]
 	AudioStreamPlayer2D fail;
+	[Export]
+	AnimationPlayer ani;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (IsCute) {
+			this.textBox.AddThemeColorOverride("cute", Color.FromHtml("f19ee5"));
+		}
+		if (Direction == Vector2.Left) {
+			this.textBox.HorizontalAlignment = HorizontalAlignment.Left;
+		} 
+		else
+		{
+			this.textBox.HorizontalAlignment = HorizontalAlignment.Right;
+		}
+		this.Monitoring = true;
+		this.AreaEntered += Collide;
+
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		if (isAlive) {
+			this.textBox.Text = word;
 			if (PausedTime > 0) 
 			{
 				this.Velocity = Vector2.Zero;
@@ -63,31 +76,33 @@ public partial class Word : CharacterBody2D
 			} else {
 				this.Velocity = Direction * (float) BaseVelocity;
 			}
-			// Move
+			this.Position = Velocity * (float)delta;
 			}
 	}
 	
-	public void OnCollide(Object Hurtbox) 
+	public void Collide(Area2D otherArea)
 	{
-		GameManager.Hurt();
-		this.ExplodeBadEffect();
-		this.Destroy();
+		if (otherArea.IsInGroup("Player"))
+		{
+			ExplodeBadEffect();
+			GameManager.Hurt();
+		}
 	}
 
 	public char FirstLetter() {
-		return MyString[LetterIndex];
+		return word[LetterIndex];
 	}
 	
 	public void TypeStrike(string letter) 
 	{
-		if (MyString[LetterIndex] == letter.ToLower()[0]) 
+		if (word[LetterIndex] == letter.ToLower()[0]) 
 		{
-			var c_array = MyString.ToCharArray();
+			var c_array = word.ToCharArray();
 			c_array[LetterIndex] = ' ';
-			MyString = new string(c_array);
-			if (String.IsNullOrEmpty(MyString)) 
+			word = new string(c_array);
+			if (String.IsNullOrEmpty(word)) 
 			{
-				this.ExplodeGoodEffect();
+				this.ExplodeGoodEffect(this.IsCute);
 				this.WordComplete();
 				this.Destroy();
 			} else {
@@ -102,7 +117,8 @@ public partial class Word : CharacterBody2D
 		}
 	}
 
-	public void WordComplete() {
+	public void WordComplete() 
+	{
 		if (IsCute) {
 			GameManager.Cute();
 		}
@@ -110,26 +126,35 @@ public partial class Word : CharacterBody2D
 	
 	public void Destroy() {
 		this.isAlive = false;
-		this.Visible = false;
 	}
 
 	private void BadHitEffect()
 	{
-		//throw new NotImplementedException();
+		ani.Stop();
+		ani.Play("BadHit");
 	}
 
 	private void GoodHitEffect()
 	{
-		//throw new NotImplementedException();
+		ani.Stop();
+		ani.Play("GoodHit");
 	}
 
-	private void ExplodeGoodEffect()
+	private void ExplodeGoodEffect(bool cute)
 	{
-		//throw new NotImplementedException();
+		ani.Stop();
+		if (cute) {
+			ani.Play("SuccessCute");
+		} else {
+			ani.Play("SuccessNormal");
+		}
+		this.Destroy(); 
 	}
 
 	private void ExplodeBadEffect()
 	{
-		//throw new NotImplementedException();
+		ani.Stop();
+		ani.Play("fail");
+		this.Destroy(); 
 	}
 }

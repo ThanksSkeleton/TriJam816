@@ -6,7 +6,6 @@ public partial class MainMenu : Control
 	[Export]
 	TextureButton Start;
 
-	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -22,6 +21,4 @@ public partial class MainMenu : Control
 	{
 		GetTree().ChangeSceneToFile("res://howToPlay.tscn");		
 	}
-	
-	
 }
