@@ -1,15 +1,47 @@
 [gd_scene format=3 uid="uid://b3k46usi0k1vh"]
 
+[ext_resource type="AudioStream" uid="uid://ccuar3ka24fl2" path="res://Music/djartmusic-the-return-of-the-8-bit-era-301292.mp3" id="1_puq8g"]
 [ext_resource type="Texture2D" uid="uid://ubkailhps1vk" path="res://Images/Show Over.PNG" id="1_vkac0"]
 [ext_resource type="Texture2D" uid="uid://cogwuuo0sdg4r" path="res://Images/Character Still Eyes Open Mouth Open.PNG" id="2_rlycu"]
+[ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="3_2emus"]
+[ext_resource type="Texture2D" uid="uid://dag2ymtjmryrf" path="res://Images/Saved The Day.PNG" id="3_rlycu"]
+[ext_resource type="Texture2D" uid="uid://dvgfab1475uv1" path="res://Images/Stage Lights 1.PNG" id="4_e4xfp"]
+[ext_resource type="Texture2D" uid="uid://w74qinfad3ce" path="res://Images/Stage 3_Dim.PNG" id="5_puq8g"]
 
 [node name="YouWin" type="Node2D" unique_id=542551093]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=247431579]
+stream = ExtResource("1_puq8g")
+autoplay = true
+parameters/looping = false
+
 [node name="ShowOver" type="Sprite2D" parent="." unique_id=101081431]
+z_index = 1
+material = ExtResource("3_2emus")
 position = Vector2(628, 339)
 texture = ExtResource("1_vkac0")
 
-[node name="CharacterStillEyesOpenMouthOpen" type="Sprite2D" parent="." unique_id=1544486361]
-position = Vector2(631, 361)
+[node name="Player" type="Sprite2D" parent="." unique_id=1544486361]
+z_index = 1
+material = ExtResource("3_2emus")
+position = Vector2(377, 448.99997)
 scale = Vector2(0.8333333, 0.7777778)
 texture = ExtResource("2_rlycu")
+
+[node name="SavedTheDay" type="Sprite2D" parent="." unique_id=826952870]
+z_index = 3
+material = ExtResource("3_2emus")
+position = Vector2(812.00006, 425)
+scale = Vector2(0.7997881, 0.6641883)
+texture = ExtResource("3_rlycu")
+
+[node name="Lights" type="Sprite2D" parent="." unique_id=20485509]
+position = Vector2(641.5, 361.5)
+scale = Vector2(1.6037499, 1.1983333)
+texture = ExtResource("4_e4xfp")
+
+[node name="Stage" type="Sprite2D" parent="." unique_id=928830069]
+z_index = -1
+position = Vector2(641.5, 361.5)
+scale = Vector2(1.60375, 1.1983334)
+texture = ExtResource("5_puq8g")

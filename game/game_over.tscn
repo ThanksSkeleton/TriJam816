@@ -1,20 +1,55 @@
 [gd_scene format=3 uid="uid://b66ctqsleleij"]
 
 [ext_resource type="Texture2D" uid="uid://ubkailhps1vk" path="res://Images/Show Over.PNG" id="1_ccer4"]
+[ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="1_fkf4o"]
 [ext_resource type="Texture2D" uid="uid://dvrufuypmnm3u" path="res://Images/Zombies.PNG" id="2_8u835"]
 [ext_resource type="Texture2D" uid="uid://b63f5ltmhyuvw" path="res://Images/Character Death.PNG" id="3_ftari"]
+[ext_resource type="Texture2D" uid="uid://76qoq11lrs3v" path="res://Images/Zombie A1.PNG" id="4_8u835"]
+[ext_resource type="Texture2D" uid="uid://dxggmrm4akt20" path="res://Images/Stage 1_DIM.PNG" id="5_ftari"]
+[ext_resource type="AudioStream" uid="uid://kh4hs5wtbayr" path="res://Music/arpmedia-scary-569429.mp3" id="6_28vn7"]
+[ext_resource type="AudioStream" uid="uid://cuc6aniydopw3" path="res://SFX/165872__voiceofgup__zombiesmoaning.wav" id="7_fkf4o"]
 
 [node name="GameOver" type="Node2D" unique_id=783712007]
 
 [node name="ShowOver" type="Sprite2D" parent="." unique_id=1832561136]
-position = Vector2(661, 306)
+material = ExtResource("1_fkf4o")
+position = Vector2(662, 306)
 texture = ExtResource("1_ccer4")
 
 [node name="ZombieTitle" type="Sprite2D" parent="." unique_id=1948095084]
+material = ExtResource("1_fkf4o")
 position = Vector2(656, 454)
 texture = ExtResource("2_8u835")
 
 [node name="CharacterDeath" type="Sprite2D" parent="." unique_id=1321199715]
-position = Vector2(711, 313)
-scale = Vector2(0.56, 0.5600006)
+z_index = -1
+material = ExtResource("1_fkf4o")
+position = Vector2(662.00006, 328)
+scale = Vector2(0.87441045, 0.7319668)
 texture = ExtResource("3_ftari")
+
+[node name="ZombieA2" type="Sprite2D" parent="." unique_id=1241618051]
+material = ExtResource("1_fkf4o")
+position = Vector2(1158, 381)
+texture = ExtResource("4_8u835")
+flip_h = true
+
+[node name="ZombieA1" type="Sprite2D" parent="." unique_id=1478841081]
+material = ExtResource("1_fkf4o")
+position = Vector2(192, 380)
+texture = ExtResource("4_8u835")
+
+[node name="Stage1Dim" type="Sprite2D" parent="." unique_id=551686559]
+z_index = -5
+position = Vector2(630, 361)
+scale = Vector2(1.5531241, 1.1527963)
+texture = ExtResource("5_ftari")
+
+[node name="ScaryMusic" type="AudioStreamPlayer" parent="." unique_id=1736519372]
+stream = ExtResource("6_28vn7")
+autoplay = true
+parameters/looping = false
+
+[node name="ZombieGroans" type="AudioStreamPlayer" parent="." unique_id=1972137683]
+stream = ExtResource("7_fkf4o")
+volume_db = -8.625

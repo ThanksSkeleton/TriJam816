@@ -6,13 +6,15 @@ using System.Linq;
 public partial class GameManager : Node2D
 {
 	[Export]
+	public AudioStreamPlayer mainMusic;
+	
+	[Export]
 	public PackedScene ZombieScene; 
 
 	[Export]
 	public PackedScene WordScene;
 
 	// State
-	int ZombiesWaiting;
 	int ZombieLevel;
 
 	int HealthLevel;
@@ -45,7 +47,7 @@ public partial class GameManager : Node2D
 	Node2D Right_Zombie_5;
 	[Export]
 	Node2D Right_Zombie_6;
-
+	
 	[Export]
 	Node2D Left_Word_1;
 	[Export]
@@ -57,8 +59,6 @@ public partial class GameManager : Node2D
 	[Export]
 	Node2D Left_Word_5;
 	[Export]
-	Node2D Left_Word_6;
-	[Export]
 	Node2D Right_Word_1;
 	[Export]
 	Node2D Right_Word_2;
@@ -68,18 +68,18 @@ public partial class GameManager : Node2D
 	Node2D Right_Word_4;
 	[Export]
 	Node2D Right_Word_5;
-	[Export]
-	Node2D Right_Word_6;
+	
 	
 	// Const
-	const int cuteRequired = 7; 
+	const int cuteRequired = 10; 
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		// Start Music
-		// Set SongTimeRemaining
+		SongTimeRemaining = ((AudioStreamMP3) mainMusic.Stream)._GetLength();
 		this.SpawnTimes = GenerateSpawns();
+		this.mainMusic.
 	}
 
 	const int nonCuteMultiplier = 3;
@@ -97,6 +97,12 @@ public partial class GameManager : Node2D
 		}
 		toReturn = toReturn.OrderBy(a => -a.Item2).ToList();
 		return toReturn;
+	}
+
+
+	public void BeginMatch()
+	{
+		
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -131,8 +137,8 @@ public partial class GameManager : Node2D
 	
 	public void ZombieSpawn()
 	{
-		var Left_zombies = new List<Node2D> { Left_Zombie_1, Left_Zombie_2, Left_Zombie_3, Left_Zombie_4, Left_Zombie_5, Left_Zombie_6 };
-		var Right_zombies = new List<Node2D> { Right_Zombie_1, Right_Zombie_2, Right_Zombie_3, Right_Zombie_4, Right_Zombie_5, Right_Zombie_6 };
+		var Left_zombies = new List<Node2D> { Left_Zombie_1, Left_Zombie_2, Left_Zombie_3, Left_Zombie_4, Left_Zombie_5 };
+		var Right_zombies = new List<Node2D> { Right_Zombie_1, Right_Zombie_2, Right_Zombie_3, Right_Zombie_4, Right_Zombie_5 };
 	}
 
 	public void Cute() 
@@ -141,16 +147,12 @@ public partial class GameManager : Node2D
 		// Random Zombie
 		Zombie z = Helper.PickRandom(myZombies);
 		z.Heal();
-		if (ZombiesWaiting > 0) {
-			ZombieSpawn();
-			ZombiesWaiting = ZombiesWaiting - 1; 
-		}	
 	}
 	
 	public void SpawnWord(bool cute) 
 	{
-		var Left_Words = new List<Node2D> { Left_Word_1, Left_Word_2, Left_Word_3, Left_Word_4, Left_Word_5, Left_Word_6 };
-		var Right_Words = new List<Node2D> { Right_Word_1, Right_Word_2, Right_Word_3, Right_Word_4, Right_Word_5, Right_Word_6 };
+		var Left_Words = new List<Node2D> { Left_Word_1, Left_Word_2, Left_Word_3, Left_Word_4, Left_Word_5 };
+		var Right_Words = new List<Node2D> { Right_Word_1, Right_Word_2, Right_Word_3, Right_Word_4, Right_Word_5 };
 
 		// pick left or right
 		// pick spawn location
@@ -222,29 +224,22 @@ public partial class GameManager : Node2D
 	
 	public void Die() 
 	{
-		GamePause();
 		LosePopup();
 	}
 
 	public void Win() 
 	{
-		GamePause();
 		WinPopup();
 	}
 
 	private void WinPopup()
 	{
-		//throw new NotImplementedException();
+		GetTree().ChangeSceneToFile("res://you_win.tscn");		
 	}
 
 	private void LosePopup()
 	{
-		//throw new NotImplementedException();
-	}
-
-	private void GamePause()
-	{
-		//throw new NotImplementedException();
+		GetTree().ChangeSceneToFile("res://game_over.tscn");		
 	}
 
 	private void DrawHealthLevel()

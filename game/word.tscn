@@ -2,14 +2,82 @@
 
 [ext_resource type="Script" uid="uid://bmgq4vg1a1kjx" path="res://Word.cs" id="1_vl1uy"]
 [ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="2_5kvxf"]
+[ext_resource type="Texture2D" uid="uid://wqjjwqlaoohk" path="res://Particles/dirt_01.png" id="2_rv581"]
+[ext_resource type="Texture2D" uid="uid://tselr2jrxr6" path="res://Particles/dirt_02.png" id="3_qlfdg"]
+[ext_resource type="Texture2D" uid="uid://cetudugja0j35" path="res://Particles/dirt_03.png" id="4_dlft6"]
+[ext_resource type="Texture2D" uid="uid://bwvnnpgfffike" path="res://Particles/heart.png" id="5_qfnsh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rv581"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ka624"]
+frames = 3
+speed_scale = 9.5
+frame_0/texture = ExtResource("2_rv581")
+frame_0/duration = 0.54
+frame_1/texture = ExtResource("3_qlfdg")
+frame_1/duration = 0.54
+frame_2/texture = ExtResource("4_dlft6")
+frame_2/duration = 0.38
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rv581"]
+lifetime_randomness = 0.04
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+angle_min = -265.19998
+angle_max = 81.500015
+angular_velocity_min = -1.0000161
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+scale_min = 0.12
+scale_max = 0.25
+color = Color(0.047058824, 1, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
 size = Vector2(125, 60)
 
-[node name="Word" type="Node2D" unique_id=1442078363]
+[node name="Word" type="Node2D" unique_id=1442078363 node_paths=PackedStringArray("greenSplat", "heartBurst", "textBox", "area", "normal", "cute", "fail")]
 script = ExtResource("1_vl1uy")
+greenSplat = NodePath("GreenParticles")
+heartBurst = NodePath("HeartParticles")
+textBox = NodePath("WordText")
+area = NodePath("Area2D")
+normal = NodePath("SuccessNormal")
+cute = NodePath("SuccessCute")
+fail = NodePath("Fail")
+
+[node name="GreenParticles" type="GPUParticles2D" parent="." unique_id=1100532647]
+z_index = 1
+material = SubResource("CanvasItemMaterial_rv581")
+position = Vector2(54, 25.999998)
+scale = Vector2(0.5484852, 0.36142886)
+emitting = false
+amount = 3
+texture = SubResource("AnimatedTexture_ka624")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_rv581")
+
+[node name="HeartParticles" type="CPUParticles2D" parent="." unique_id=1193679350]
+position = Vector2(42, 25)
+scale = Vector2(0.47999984, 1)
+emitting = false
+amount = 100
+texture = ExtResource("5_qfnsh")
+lifetime = 2.0
+one_shot = true
+randomness = 0.16
+direction = Vector2(1, 2)
+spread = 156.29
+gravity = Vector2(0, 0)
+initial_velocity_min = 221.82
+initial_velocity_max = 326.29
+angular_velocity_max = 1.0
+angle_max = 180.0
+scale_amount_min = 0.2
+scale_amount_max = 0.2
+color = Color(0.94509804, 0.61960787, 0.8980392, 1)
 
 [node name="WordText" type="RichTextLabel" parent="." unique_id=421655195]
+z_index = 4
 offset_right = 112.0
 offset_bottom = 50.0
 theme_override_fonts/normal_font = ExtResource("2_5kvxf")
@@ -29,3 +97,9 @@ text = "TEST"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1798348422]
 position = Vector2(55.25, 24)
 shape = SubResource("RectangleShape2D_715ky")
+
+[node name="SuccessCute" type="AudioStreamPlayer2D" parent="." unique_id=1833655464]
+
+[node name="SuccessNormal" type="AudioStreamPlayer2D" parent="." unique_id=1053719818]
+
+[node name="Fail" type="AudioStreamPlayer2D" parent="." unique_id=1145884713]

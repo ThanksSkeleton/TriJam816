@@ -29,6 +29,20 @@ public partial class Word : CharacterBody2D
 	double PauseDuration;
 	[Export]
 	double BoostDuration;
+	[Export]
+	GpuParticles2D greenSplat;
+	[Export]
+	CpuParticles2D heartBurst;
+	[Export]
+	RichTextLabel textBox;
+	[Export]
+	Area2D area;
+	[Export]
+	AudioStreamPlayer2D normal;
+	[Export]
+	AudioStreamPlayer2D cute;
+	[Export]
+	AudioStreamPlayer2D fail;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

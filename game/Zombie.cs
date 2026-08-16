@@ -2,6 +2,16 @@ using Godot;
 
 public partial class Zombie : Node2D
 {
+	[Export]
+	Sprite2D sprite;
+	[Export]
+	AudioStreamPlayer2D thanks1;
+	[Export]
+	AudioStreamPlayer2D thanks2;
+	[Export]
+	CpuParticles2D hearts;
+	
+	
 	public bool isAlive;
 
 		// Called when the node enters the scene tree for the first time.

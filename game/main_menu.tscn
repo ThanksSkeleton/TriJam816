@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://3stfq88q83eu"]
+
+[ext_resource type="Texture2D" uid="uid://wrormgb7vbdq" path="res://Images/Stage 1.PNG" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://cawcjknqh3d04" path="res://MainMenu.cs" id="1_jix8l"]
+[ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="2_glbon"]
+[ext_resource type="Texture2D" uid="uid://2d05fpw5e8qu" path="res://Images/Title Card.PNG" id="2_jix8l"]
+[ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="3_glbon"]
+[ext_resource type="AudioStream" uid="uid://ccuar3ka24fl2" path="res://Music/djartmusic-the-return-of-the-8-bit-era-301292.mp3" id="6_nlkkf"]
+[ext_resource type="Texture2D" uid="uid://caw8am023p07u" path="res://Images/button_rectangle_depth_line.png" id="7_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://dvrufuypmnm3u" path="res://Images/Zombies.PNG" id="7_qe12f"]
+
+[node name="MainMenu" type="Control" unique_id=283486170 node_paths=PackedStringArray("Start")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jix8l")
+Start = NodePath("Control/TextureButton")
+
+[node name="Logo" type="TextureRect" parent="." unique_id=171515493]
+z_index = 1
+material = ExtResource("2_glbon")
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 722.0
+texture = ExtResource("2_jix8l")
+
+[node name="StageBG" type="TextureRect" parent="." unique_id=315517721]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 1280.0
+offset_bottom = 717.0
+texture = ExtResource("1_fu7sn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1412270901]
+stream = ExtResource("6_nlkkf")
+autoplay = true
+parameters/looping = false
+
+[node name="Zombies" type="Sprite2D" parent="." unique_id=679925371]
+material = ExtResource("2_glbon")
+position = Vector2(723, 201)
+scale = Vector2(0.6783024, 0.6158731)
+texture = ExtResource("7_qe12f")
+offset = Vector2(395, 293)
+
+[node name="Control" type="Control" parent="." unique_id=855825079]
+anchors_preset = 0
+offset_left = 267.0
+offset_top = 458.0
+offset_right = 307.0
+offset_bottom = 498.0
+
+[node name="TextureButton" type="TextureButton" parent="Control" unique_id=1581226584]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6757867, 0.82629836)
+texture_normal = ExtResource("7_8qtwp")
+
+[node name="Label" type="Label" parent="Control" unique_id=403252039]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 4.0
+offset_right = 240.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.94509804, 0.61960787, 0.8980392, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_glbon")
+theme_override_font_sizes/font_size = 72
+text = "START"

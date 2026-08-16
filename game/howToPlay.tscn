@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://3p6iltepox6"]
+
+[ext_resource type="Script" uid="uid://c57n25dhvb8ie" path="res://HowToPlay.cs" id="1_6mam6"]
+[ext_resource type="AudioStream" uid="uid://cuc6aniydopw3" path="res://SFX/165872__voiceofgup__zombiesmoaning.wav" id="4_ae567"]
+[ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="4_wai6e"]
+[ext_resource type="Texture2D" uid="uid://dxggmrm4akt20" path="res://Images/Stage 1_DIM.PNG" id="6_ed4md"]
+[ext_resource type="Texture2D" uid="uid://caw8am023p07u" path="res://Images/button_rectangle_depth_line.png" id="7_csf71"]
+[ext_resource type="Texture2D" uid="uid://yutqj8tl2uj3" path="res://Images/Character Still Eye Closed.PNG" id="7_i0xw3"]
+[ext_resource type="FontFile" uid="uid://ca4h1nf63vgin" path="res://Fonts/Sono-Bold.ttf" id="7_w8pbt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
+size = Vector2(20, 15.452802)
+
+[node name="HowToPlay" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Start")]
+script = ExtResource("1_6mam6")
+Start = NodePath("Control/TextureButton")
+
+[node name="murmurs" type="AudioStreamPlayer" parent="." unique_id=168000472]
+stream = ExtResource("4_ae567")
+volume_db = -5.49
+autoplay = true
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1483936185]
+position = Vector2(4.0000005, 1.0000114)
+scale = Vector2(1.600188, 1.1971103)
+texture = ExtResource("6_ed4md")
+offset = Vector2(398.75037, 299.21902)
+
+[node name="Player" type="Node2D" parent="." unique_id=374016299]
+position = Vector2(1132, 338)
+
+[node name="PlayerHurtBox" type="Area2D" parent="Player" unique_id=402537126]
+position = Vector2(1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerHurtBox" unique_id=135350057]
+scale = Vector2(8.686083, 36.678402)
+shape = SubResource("RectangleShape2D_715ky")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1013402559]
+material = ExtResource("4_wai6e")
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("7_i0xw3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1846702132]
+offset_left = 92.0
+offset_top = 35.0
+offset_right = 992.0
+offset_bottom = 835.0
+theme_override_colors/default_color = Color(0.94509804, 0.61960787, 0.8980392, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/normal_font = ExtResource("7_w8pbt")
+theme_override_font_sizes/normal_font_size = 50
+text = "The world has been infected with a zombie plague. 
+Only the CUTE power of your music can bring them back.
+Type every word.
+CUTE words cure zombies.  "
+fit_content = true
+
+[node name="Control" type="Control" parent="." unique_id=1585268049]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 546.0
+offset_top = 449.0
+offset_right = 586.0
+offset_bottom = 489.0
+
+[node name="TextureButton" type="TextureButton" parent="Control" unique_id=240158937]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6757867, 0.82629836)
+texture_normal = ExtResource("7_csf71")
+
+[node name="Label" type="Label" parent="Control" unique_id=369707241]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 4.0
+offset_right = 240.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.94509804, 0.61960787, 0.8980392, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_w8pbt")
+theme_override_font_sizes/font_size = 72
+text = "START"

@@ -4,14 +4,16 @@
 [ext_resource type="PackedScene" uid="uid://c5w0ut4ydbvx5" path="res://zombie.tscn" id="2_i431l"]
 [ext_resource type="PackedScene" uid="uid://o86td7khvx8m" path="res://word.tscn" id="2_oxp8w"]
 [ext_resource type="Texture2D" uid="uid://yutqj8tl2uj3" path="res://Images/Character Still Eye Closed.PNG" id="3_7sfm4"]
-[ext_resource type="Texture2D" uid="uid://wrormgb7vbdq" path="res://Images/Stage 1.PNG" id="4_6t8i5"]
+[ext_resource type="AudioStream" uid="uid://d1hunmtd8meam" path="res://Music/aviansho9-k-pop-beat-190643.mp3" id="4_dw4jg"]
+[ext_resource type="Texture2D" uid="uid://dxggmrm4akt20" path="res://Images/Stage 1_DIM.PNG" id="5_dw4jg"]
+[ext_resource type="Material" uid="uid://xmbljp6o8wom" path="res://squigglevision.tres" id="6_0npn6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_715ky"]
 size = Vector2(20, 15.452802)
 
-[node name="Battle" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
-position = Vector2(1, 0)
+[node name="Battle" type="Node2D" unique_id=1664762994 node_paths=PackedStringArray("mainMusic", "Left_Zombie_1", "Left_Zombie_2", "Left_Zombie_3", "Left_Zombie_4", "Left_Zombie_5", "Left_Zombie_6", "Right_Zombie_1", "Right_Zombie_2", "Right_Zombie_3", "Right_Zombie_4", "Right_Zombie_5", "Right_Zombie_6", "Left_Word_1", "Left_Word_2", "Left_Word_3", "Left_Word_4", "Left_Word_5", "Right_Word_1", "Right_Word_2", "Right_Word_3", "Right_Word_4", "Right_Word_5")]
 script = ExtResource("1_ip7xm")
+mainMusic = NodePath("MainMusicPlayer")
 ZombieScene = ExtResource("2_i431l")
 WordScene = ExtResource("2_oxp8w")
 Left_Zombie_1 = NodePath("ZombieSpawns/LeftZombies/Zombie")
@@ -37,10 +39,13 @@ Right_Word_3 = NodePath("WordSpawns/RightSpawn/Spawn3")
 Right_Word_4 = NodePath("WordSpawns/RightSpawn/Spawn4")
 Right_Word_5 = NodePath("WordSpawns/RightSpawn/Spawn5")
 
+[node name="MainMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=315747356]
+stream = ExtResource("4_dw4jg")
+
 [node name="Background" type="Sprite2D" parent="." unique_id=1483936185]
-position = Vector2(638.00006, 333)
-scale = Vector2(1.5999987, 1.2799988)
-texture = ExtResource("4_6t8i5")
+scale = Vector2(1.6033205, 1.1960554)
+texture = ExtResource("5_dw4jg")
+offset = Vector2(397, 300)
 
 [node name="Player" type="Node2D" parent="." unique_id=374016299]
 position = Vector2(640, 200)
@@ -53,6 +58,7 @@ scale = Vector2(8.686083, 36.678402)
 shape = SubResource("RectangleShape2D_715ky")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1013402559]
+material = ExtResource("6_0npn6")
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_7sfm4")
 
