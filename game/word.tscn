@@ -321,8 +321,8 @@ size = Vector2(296.25, 60)
 
 [node name="Word" type="Area2D" unique_id=1219763690 node_paths=PackedStringArray("greenSplat", "heartBurst", "textBox", "area", "normal", "cute", "fail", "ani")]
 script = ExtResource("1_vl1uy")
-BaseVelocity = 1.0
-BaseBoostFraction = 4.0
+BaseVelocity = 25.0
+BaseBoostFraction = 2.0
 PauseDuration = 0.5
 BoostDuration = 2.0
 greenSplat = NodePath("GreenParticles")

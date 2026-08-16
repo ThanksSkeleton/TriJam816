@@ -9,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://dvluakre1ik2t" path="res://Images/Zombie A2.PNG" id="7_ogcpr"]
 [ext_resource type="Texture2D" uid="uid://bl7lkkqppoi1o" path="res://Images/Zombie A3.PNG" id="8_i82o5"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i82o5"]
+streams_count = 2
+stream_0/stream = ExtResource("5_lnshm")
+stream_1/stream = ExtResource("4_7nqyo")
+
 [sub_resource type="Animation" id="Animation_jw3ev"]
 resource_name = "Heal"
 length = 3.0
@@ -24,14 +29,11 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"Die"
-}, {
-"args": [],
-"method": &"RandomThankYou"
 }]
 }
 tracks/1/type = "value"
@@ -54,6 +56,18 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.19999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ThankYou:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8333334),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -83,7 +97,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ThankYou:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pub2r"]
@@ -95,8 +121,8 @@ _data = {
 [node name="Node2D" type="Node2D" unique_id=208620959 node_paths=PackedStringArray("sprite", "thanks1", "thanks2", "hearts", "player")]
 script = ExtResource("1_roy8y")
 sprite = NodePath("Sprite2D")
-thanks1 = NodePath("ThankYou1")
-thanks2 = NodePath("ThankYou2")
+thanks1 = NodePath("")
+thanks2 = NodePath("ThankYou")
 hearts = NodePath("HeartParticles")
 player = NodePath("AnimationPlayer")
 
@@ -104,14 +130,13 @@ player = NodePath("AnimationPlayer")
 material = ExtResource("2_eseir")
 texture = ExtResource("2_jmu02")
 
-[node name="ThankYou2" type="AudioStreamPlayer2D" parent="." unique_id=1091667927]
-stream = ExtResource("4_7nqyo")
-
-[node name="ThankYou1" type="AudioStreamPlayer2D" parent="." unique_id=668415775]
-stream = ExtResource("5_lnshm")
+[node name="ThankYou" type="AudioStreamPlayer2D" parent="." unique_id=1091667927]
+stream = SubResource("AudioStreamRandomizer_i82o5")
+volume_db = 10.434
 
 [node name="HeartParticles" type="CPUParticles2D" parent="." unique_id=1709138024]
 scale = Vector2(0.47999984, 1)
+emitting = false
 amount = 100
 texture = ExtResource("6_lnshm")
 lifetime = 2.0

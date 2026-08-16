@@ -159,7 +159,7 @@ offset = Vector2(397, 300)
 [node name="Player" type="Node2D" parent="." unique_id=374016299]
 position = Vector2(640, 200)
 
-[node name="PlayerHurtBox" type="Area2D" parent="Player" unique_id=402537126]
+[node name="PlayerHurtBox" type="Area2D" parent="Player" unique_id=402537126 groups=["Player"]]
 position = Vector2(1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerHurtBox" unique_id=135350057]
@@ -178,6 +178,7 @@ autoplay = &"Sing"
 [node name="WordSpawns" type="Node2D" parent="." unique_id=1414087191]
 
 [node name="LeftSpawn" type="Node2D" parent="WordSpawns" unique_id=911068200]
+position = Vector2(-178, 0)
 
 [node name="Spawn5" type="Node2D" parent="WordSpawns/LeftSpawn" unique_id=1606379959]
 position = Vector2(0, 65)
@@ -195,7 +196,7 @@ position = Vector2(0, 260)
 position = Vector2(0, 325)
 
 [node name="RightSpawn" type="Node2D" parent="WordSpawns" unique_id=573808883]
-position = Vector2(1277, 0)
+position = Vector2(1520, 2)
 
 [node name="Spawn5" type="Node2D" parent="WordSpawns/RightSpawn" unique_id=1413426702]
 position = Vector2(0, 65)
